@@ -1,0 +1,5 @@
+{
+  "extends": "@hpulse/typescript-config/base.json"
+}
+
+

@@ -1,0 +1,145 @@
+{
+  "__serde_tag": "object",
+  "__serde_val": {
+    "custom_strings": {
+      "__serde_tag": "object",
+      "__serde_val": {
+        "addon": {
+          "__serde_tag": "map",
+          "__serde_val": []
+        },
+        "web": {
+          "__serde_tag": "map",
+          "__serde_val": []
+        }
+      }
+    },
+    "default_action": {
+      "__serde_tag": "primitive",
+      "__serde_val": "download"
+    },
+    "default_action_per_hostname": {
+      "__serde_tag": "map",
+      "__serde_val": []
+    },
+    "dockmode": {
+      "__serde_tag": "primitive",
+      "__serde_val": "popup"
+    },
+    "dont_ask_for_user_review": {
+      "__serde_tag": "primitive",
+      "__serde_val": false
+    },
+    "downloaded": {
+      "__serde_tag": "map",
+      "__serde_val": []
+    },
+    "hide_nomedia_box": {
+      "__serde_tag": "primitive",
+      "__serde_val": false
+    },
+    "history_days": {
+      "__serde_tag": "primitive",
+      "__serde_val": 0
+    },
+    "jwt": {
+      "__serde_tag": "primitive",
+      "__serde_val": null
+    },
+    "last_migration_request": {
+      "__serde_tag": "primitive",
+      "__serde_val": 0
+    },
+    "lsd": {
+      "__serde_tag": "primitive",
+      "__serde_val": 1760331006876
+    },
+    "max_concurrent_downloads": {
+      "__serde_tag": "primitive",
+      "__serde_val": 6
+    },
+    "popup_size": {
+      "__serde_tag": "primitive",
+      "__serde_val": "medium"
+    },
+    "prefer_highest_quality": {
+      "__serde_tag": "primitive",
+      "__serde_val": false
+    },
+    "preview_mode": {
+      "__serde_tag": "primitive",
+      "__serde_val": "video"
+    },
+    "show_desktop_notifications": {
+      "__serde_tag": "primitive",
+      "__serde_val": true
+    },
+    "show_desktop_notifications_private": {
+      "__serde_tag": "primitive",
+      "__serde_val": false
+    },
+    "show_transient_history": {
+      "__serde_tag": "primitive",
+      "__serde_val": true
+    },
+    "smartnaming": {
+      "__serde_tag": "object",
+      "__serde_val": {
+        "compiled": {
+          "__serde_tag": "object",
+          "__serde_val": {
+            "default_": {
+              "__serde_tag": "object",
+              "__serde_val": {
+                "max_length": {
+                  "__serde_tag": "primitive",
+                  "__serde_val": 64
+                },
+                "template": {
+                  "__serde_tag": "primitive",
+                  "__serde_val": "%title"
+                }
+              }
+            },
+            "rules": {
+              "__serde_tag": "array",
+              "__serde_val": []
+            }
+          }
+        },
+        "source": {
+          "__serde_tag": "primitive",
+          "__serde_val": null
+        }
+      }
+    },
+    "successful_downloads_count": {
+      "__serde_tag": "primitive",
+      "__serde_val": 1
+    },
+    "ui_theme": {
+      "__serde_tag": "primitive",
+      "__serde_val": "system"
+    },
+    "use_context_menu": {
+      "__serde_tag": "primitive",
+      "__serde_val": true
+    },
+    "version": {
+      "__serde_tag": "primitive",
+      "__serde_val": 1
+    },
+    "youtube_audio_strategy": {
+      "__serde_tag": "primitive",
+      "__serde_val": "original"
+    },
+    "youtube_prefer_hls": {
+      "__serde_tag": "primitive",
+      "__serde_val": true
+    },
+    "youtube_throttle": {
+      "__serde_tag": "primitive",
+      "__serde_val": true
+    }
+  }
+}

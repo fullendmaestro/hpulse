@@ -1,0 +1,896 @@
+{
+  "__serde_tag": "object",
+  "__serde_val": {
+    "current_win_tab": {
+      "__serde_tag": "object",
+      "__serde_val": {
+        "tab_id": {
+          "__serde_tag": "some",
+          "__serde_val": {
+            "__serde_tag": "primitive",
+            "__serde_val": 1028973223
+          }
+        },
+        "win_id": {
+          "__serde_tag": "some",
+          "__serde_val": {
+            "__serde_tag": "primitive",
+            "__serde_val": 1028972503
+          }
+        }
+      }
+    },
+    "discovered": {
+      "__serde_tag": "map",
+      "__serde_val": [
+        [
+          {
+            "__serde_tag": "primitive",
+            "__serde_val": 1028973105
+          },
+          {
+            "__serde_tag": "object",
+            "__serde_val": {
+              "media": {
+                "__serde_tag": "map",
+                "__serde_val": [
+                  [
+                    {
+                      "__serde_tag": "primitive",
+                      "__serde_val": "media_hash_2161661224443613"
+                    },
+                    {
+                      "__serde_tag": "object",
+                      "__serde_val": {
+                        "discovery_timestamp_ms": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": 1760386981971
+                        },
+                        "duration": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": 346.48333
+                        },
+                        "hash": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "media_hash_2161661224443613"
+                        },
+                        "initiator": {
+                          "__serde_tag": "some",
+                          "__serde_val": {
+                            "__serde_tag": "url",
+                            "__serde_val": "https://updraft.cyfrin.io/"
+                          }
+                        },
+                        "is_youtube": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": false
+                        },
+                        "master_url": {
+                          "__serde_tag": "url",
+                          "__serde_val": "https://stream.mux.com/JgrrCt01006ly1pFMNcjsTHvXXisB2ai00BwV6BDT01cuaI.m3u8?redundant_streams=true"
+                        },
+                        "playlist": {
+                          "__serde_tag": "array",
+                          "__serde_val": [
+                            {
+                              "__serde_tag": "object",
+                              "__serde_val": {
+                                "av": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "audio": {
+                                      "__serde_tag": "primitive",
+                                      "__serde_val": false
+                                    },
+                                    "video": {
+                                      "__serde_tag": "url",
+                                      "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/g001bcFJOBddgVa2Bp6kuzlthed1fg8S012KtAcnI02B12784watRJzKHucUKbD8rPkJb004zQp9tkWlM54omGB00te5AEJJsLBJb/rendition.m3u8?cdn=fastly&expires=1760990400&skid=default&signature=NjhmNjlhMjVfMjY0OGQ3Y2Y0MjMwNjBlMWVlNDcyNWI4OTUwOTIxMmVhMzkxOWJhNTAxOWJlNmVlYjVkM2M3YTBjODRkMDlhNQ==&vsid=KL9jCNC1G1E2r6GME3RGQpf500ahKLvxKG4QAD9oW025I1YrgjzVs3p01wpXp4zS7UrF43StCaxbPI"
+                                    }
+                                  }
+                                },
+                                "demuxer": {
+                                  "__serde_tag": "primitive",
+                                  "__serde_val": "mp4"
+                                },
+                                "quality": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "bitrate": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "primitive",
+                                        "__serde_val": 4259200
+                                      }
+                                    },
+                                    "size": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "object",
+                                        "__serde_val": {
+                                          "height": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 1080
+                                          },
+                                          "width": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 1920
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "__serde_tag": "object",
+                              "__serde_val": {
+                                "av": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "audio": {
+                                      "__serde_tag": "primitive",
+                                      "__serde_val": false
+                                    },
+                                    "video": {
+                                      "__serde_tag": "url",
+                                      "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/g001bcFJOBddgVa2Bp6kuzlthed1fg8S012KtAcnI02B12784watRJzKHucUKbD8rPkJb004zQp9tkWlM54omGB00te5AEJJsLBJb/rendition.m3u8?cdn=cloudflare&expires=1760990400&skid=default&signature=NjhmNjlhMjVfMDczM2Y1MTZiMTMxOWE4NTA4MjQ2Mjk5OGM3YzAxYTA2OTBhZDliYWFjMjExZWNiMjk3MTcyY2NmZWEzZmE4Yw==&vsid=KL9jCNC1G1E2r6GME3RGQpf500ahKLvxKG4QAD9oW025I1YrgjzVs3p01wpXp4zS7UrF43StCaxbPI"
+                                    }
+                                  }
+                                },
+                                "demuxer": {
+                                  "__serde_tag": "primitive",
+                                  "__serde_val": "mp4"
+                                },
+                                "quality": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "bitrate": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "primitive",
+                                        "__serde_val": 4259200
+                                      }
+                                    },
+                                    "size": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "object",
+                                        "__serde_val": {
+                                          "height": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 1080
+                                          },
+                                          "width": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 1920
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "__serde_tag": "object",
+                              "__serde_val": {
+                                "av": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "audio": {
+                                      "__serde_tag": "primitive",
+                                      "__serde_val": false
+                                    },
+                                    "video": {
+                                      "__serde_tag": "url",
+                                      "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/SILQ23ZpLjjwVZ9GZdYS7hlJv3d00Pe61e1HPaSr401dvLtgEvB7P01FWsZ2b6VG01BtSXadx2m69rixWXIywb992sZ7Eq38jg8IBavLKxoM01uU/rendition.m3u8?cdn=fastly&expires=1760990400&skid=default&signature=NjhmNjlhMjVfNmUxMDg5NGMyMmJmMDdmNDQyOThlYTQ0OGQzMTQxYjQ4OTg3YjQyOTc2ZTk3YzcyOTBlZjBiMmY3YTE2YmNlMA==&vsid=KL9jCNC1G1E2r6GME3RGQpf500ahKLvxKG4QAD9oW025I1YrgjzVs3p01wpXp4zS7UrF43StCaxbPI"
+                                    }
+                                  }
+                                },
+                                "demuxer": {
+                                  "__serde_tag": "primitive",
+                                  "__serde_val": "mp4"
+                                },
+                                "quality": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "bitrate": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "primitive",
+                                        "__serde_val": 2340800
+                                      }
+                                    },
+                                    "size": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "object",
+                                        "__serde_val": {
+                                          "height": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 720
+                                          },
+                                          "width": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 1280
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "__serde_tag": "object",
+                              "__serde_val": {
+                                "av": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "audio": {
+                                      "__serde_tag": "primitive",
+                                      "__serde_val": false
+                                    },
+                                    "video": {
+                                      "__serde_tag": "url",
+                                      "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/SILQ23ZpLjjwVZ9GZdYS7hlJv3d00Pe61e1HPaSr401dvLtgEvB7P01FWsZ2b6VG01BtSXadx2m69rixWXIywb992sZ7Eq38jg8IBavLKxoM01uU/rendition.m3u8?cdn=cloudflare&expires=1760990400&skid=default&signature=NjhmNjlhMjVfYjA3MmU3ZTllYmI1OTAxNmZhOTUzNTBkYmFjNDRlNjE4MTI4NDBlZDc5MzYyNTZhZTNlZGQ0NTc0NDlmMjQ2Mg==&vsid=KL9jCNC1G1E2r6GME3RGQpf500ahKLvxKG4QAD9oW025I1YrgjzVs3p01wpXp4zS7UrF43StCaxbPI"
+                                    }
+                                  }
+                                },
+                                "demuxer": {
+                                  "__serde_tag": "primitive",
+                                  "__serde_val": "mp4"
+                                },
+                                "quality": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "bitrate": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "primitive",
+                                        "__serde_val": 2340800
+                                      }
+                                    },
+                                    "size": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "object",
+                                        "__serde_val": {
+                                          "height": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 720
+                                          },
+                                          "width": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 1280
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "__serde_tag": "object",
+                              "__serde_val": {
+                                "av": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "audio": {
+                                      "__serde_tag": "primitive",
+                                      "__serde_val": false
+                                    },
+                                    "video": {
+                                      "__serde_tag": "url",
+                                      "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/J01zAi00qocP56g5AovdW8UKZaxOvBesbWHto33va3U01mUVH701Rx8UXZQPCecxsXu3hMKOudLCNy8RdDo02QKU302td02vuhMvZrb14ncYOORdHs/rendition.m3u8?cdn=fastly&expires=1760990400&skid=default&signature=NjhmNjlhMjVfNTdiODM5MWQ4YWRiMTZmYTUxNzRiMzUzYjRlYTIwM2I0YWZiODI1MzFjZjRjMmVhMmQyZDdlMzI3MDU4MDcwMA==&vsid=KL9jCNC1G1E2r6GME3RGQpf500ahKLvxKG4QAD9oW025I1YrgjzVs3p01wpXp4zS7UrF43StCaxbPI"
+                                    }
+                                  }
+                                },
+                                "demuxer": {
+                                  "__serde_tag": "primitive",
+                                  "__serde_val": "mp4"
+                                },
+                                "quality": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "bitrate": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "primitive",
+                                        "__serde_val": 1152800
+                                      }
+                                    },
+                                    "size": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "object",
+                                        "__serde_val": {
+                                          "height": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 480
+                                          },
+                                          "width": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 854
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "__serde_tag": "object",
+                              "__serde_val": {
+                                "av": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "audio": {
+                                      "__serde_tag": "primitive",
+                                      "__serde_val": false
+                                    },
+                                    "video": {
+                                      "__serde_tag": "url",
+                                      "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/J01zAi00qocP56g5AovdW8UKZaxOvBesbWHto33va3U01mUVH701Rx8UXZQPCecxsXu3hMKOudLCNy8RdDo02QKU302td02vuhMvZrb14ncYOORdHs/rendition.m3u8?cdn=cloudflare&expires=1760990400&skid=default&signature=NjhmNjlhMjVfNGNjY2E5ZjBjNDhiYzMxMzRjNjFlZjgzNDJmNzdhMmVhYTgwODAyNDk2NzIwOTU4NTM2ODQ3NjM5NmQ3MTNjNg==&vsid=KL9jCNC1G1E2r6GME3RGQpf500ahKLvxKG4QAD9oW025I1YrgjzVs3p01wpXp4zS7UrF43StCaxbPI"
+                                    }
+                                  }
+                                },
+                                "demuxer": {
+                                  "__serde_tag": "primitive",
+                                  "__serde_val": "mp4"
+                                },
+                                "quality": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "bitrate": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "primitive",
+                                        "__serde_val": 1152800
+                                      }
+                                    },
+                                    "size": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "object",
+                                        "__serde_val": {
+                                          "height": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 480
+                                          },
+                                          "width": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 854
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "__serde_tag": "object",
+                              "__serde_val": {
+                                "av": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "audio": {
+                                      "__serde_tag": "primitive",
+                                      "__serde_val": false
+                                    },
+                                    "video": {
+                                      "__serde_tag": "url",
+                                      "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/4wXlc3AODBLypSiB3KhFranSP2mr9EOBdw7018Z1h475JAW6bHEtA00f01fUOou2l4TMRCOl00GCOJpBSbMtPn3bQFyyg6r2WGAo/rendition.m3u8?cdn=fastly&expires=1760990400&skid=default&signature=NjhmNjlhMjVfYTdiZjU3NzdiMzVmMzI0OTgxNGVjYjU4MTNjMmQxOGNmOGQ4YjYyNmQzY2M1YjNhZmQ0OWVlNmJmNmEyNGVjYw==&vsid=KL9jCNC1G1E2r6GME3RGQpf500ahKLvxKG4QAD9oW025I1YrgjzVs3p01wpXp4zS7UrF43StCaxbPI"
+                                    }
+                                  }
+                                },
+                                "demuxer": {
+                                  "__serde_tag": "primitive",
+                                  "__serde_val": "mp4"
+                                },
+                                "quality": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "bitrate": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "primitive",
+                                        "__serde_val": 595100
+                                      }
+                                    },
+                                    "size": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "object",
+                                        "__serde_val": {
+                                          "height": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 270
+                                          },
+                                          "width": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 480
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "__serde_tag": "object",
+                              "__serde_val": {
+                                "av": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "audio": {
+                                      "__serde_tag": "primitive",
+                                      "__serde_val": false
+                                    },
+                                    "video": {
+                                      "__serde_tag": "url",
+                                      "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/4wXlc3AODBLypSiB3KhFranSP2mr9EOBdw7018Z1h475JAW6bHEtA00f01fUOou2l4TMRCOl00GCOJpBSbMtPn3bQFyyg6r2WGAo/rendition.m3u8?cdn=cloudflare&expires=1760990400&skid=default&signature=NjhmNjlhMjVfNDIxZmM2YjJkOGIxMDg2NTk1YjgwZDE4ZWZlZmI3Nzk0NDIxNDA2Y2I1MGQ4ZjAxNWRkMDA0M2ZiN2YxZjQ2Nw==&vsid=KL9jCNC1G1E2r6GME3RGQpf500ahKLvxKG4QAD9oW025I1YrgjzVs3p01wpXp4zS7UrF43StCaxbPI"
+                                    }
+                                  }
+                                },
+                                "demuxer": {
+                                  "__serde_tag": "primitive",
+                                  "__serde_val": "mp4"
+                                },
+                                "quality": {
+                                  "__serde_tag": "object",
+                                  "__serde_val": {
+                                    "bitrate": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "primitive",
+                                        "__serde_val": 595100
+                                      }
+                                    },
+                                    "size": {
+                                      "__serde_tag": "some",
+                                      "__serde_val": {
+                                        "__serde_tag": "object",
+                                        "__serde_val": {
+                                          "height": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 270
+                                          },
+                                          "width": {
+                                            "__serde_tag": "primitive",
+                                            "__serde_val": 480
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "prefered_entry": {
+                          "__serde_tag": "none"
+                        },
+                        "sent_headers": {
+                          "__serde_tag": "headers",
+                          "__serde_val": [
+                            ["accept", "*/*"],
+                            ["accept-encoding", "gzip, deflate, br, zstd"],
+                            ["accept-language", "en-US,en;q=0.9"],
+                            ["origin", "https://updraft.cyfrin.io"],
+                            ["referer", "https://updraft.cyfrin.io/"],
+                            [
+                              "sec-ch-ua",
+                              "\"Google Chrome\";v=\"141\", \"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"141\""
+                            ],
+                            ["sec-ch-ua-mobile", "?0"],
+                            ["sec-ch-ua-platform", "\"Windows\""],
+                            ["sec-fetch-dest", "empty"],
+                            ["sec-fetch-mode", "cors"],
+                            ["sec-fetch-site", "cross-site"],
+                            [
+                              "user-agent",
+                              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+                            ]
+                          ]
+                        },
+                        "thumbnail_url": {
+                          "__serde_tag": "none"
+                        },
+                        "title": {
+                          "__serde_tag": "none"
+                        },
+                        "type": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "m3u8_playlist"
+                        }
+                      }
+                    }
+                  ],
+                  [
+                    {
+                      "__serde_tag": "primitive",
+                      "__serde_val": "media_hash_3687175207004588"
+                    },
+                    {
+                      "__serde_tag": "object",
+                      "__serde_val": {
+                        "demuxer": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "mp4"
+                        },
+                        "discovery_timestamp_ms": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": 1760386981978
+                        },
+                        "duration": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": 346.48333
+                        },
+                        "has_drm": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": false
+                        },
+                        "hash": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "media_hash_3687175207004588"
+                        },
+                        "initiator": {
+                          "__serde_tag": "some",
+                          "__serde_val": {
+                            "__serde_tag": "url",
+                            "__serde_val": "https://updraft.cyfrin.io/"
+                          }
+                        },
+                        "is_youtube": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": false
+                        },
+                        "sent_headers": {
+                          "__serde_tag": "headers",
+                          "__serde_val": [
+                            ["accept", "*/*"],
+                            ["accept-encoding", "gzip, deflate, br, zstd"],
+                            ["accept-language", "en-US,en;q=0.9"],
+                            ["origin", "https://updraft.cyfrin.io"],
+                            ["referer", "https://updraft.cyfrin.io/"],
+                            [
+                              "sec-ch-ua",
+                              "\"Google Chrome\";v=\"141\", \"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"141\""
+                            ],
+                            ["sec-ch-ua-mobile", "?0"],
+                            ["sec-ch-ua-platform", "\"Windows\""],
+                            ["sec-fetch-dest", "empty"],
+                            ["sec-fetch-mode", "cors"],
+                            ["sec-fetch-site", "cross-site"],
+                            [
+                              "user-agent",
+                              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+                            ]
+                          ]
+                        },
+                        "thumbnail_url": {
+                          "__serde_tag": "none"
+                        },
+                        "title": {
+                          "__serde_tag": "none"
+                        },
+                        "type": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "m3u8"
+                        },
+                        "url": {
+                          "__serde_tag": "url",
+                          "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/SILQ23ZpLjjwVZ9GZdYS7hlJv3d00Pe61e1HPaSr401dvLtgEvB7P01FWsZ2b6VG01BtSXadx2m69rixWXIywb992sZ7Eq38jg8IBavLKxoM01uU/rendition.m3u8?cdn=fastly&expires=1760990400&skid=default&signature=NjhmNjlhMjVfNmUxMDg5NGMyMmJmMDdmNDQyOThlYTQ0OGQzMTQxYjQ4OTg3YjQyOTc2ZTk3YzcyOTBlZjBiMmY3YTE2YmNlMA==&vsid=lmHpcMnzCQG01VGPOyMC1d9niQRwpS9F4966BDocmDkxRfb6501M562pZA6FpfRSmA51GG1ORow28"
+                        }
+                      }
+                    }
+                  ],
+                  [
+                    {
+                      "__serde_tag": "primitive",
+                      "__serde_val": "media_hash_6230101477245017"
+                    },
+                    {
+                      "__serde_tag": "object",
+                      "__serde_val": {
+                        "demuxer": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "mp4"
+                        },
+                        "discovery_timestamp_ms": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": 1760387063743
+                        },
+                        "duration": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": 346.48333
+                        },
+                        "has_drm": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": false
+                        },
+                        "hash": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "media_hash_6230101477245017"
+                        },
+                        "initiator": {
+                          "__serde_tag": "some",
+                          "__serde_val": {
+                            "__serde_tag": "url",
+                            "__serde_val": "https://updraft.cyfrin.io/"
+                          }
+                        },
+                        "is_youtube": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": false
+                        },
+                        "sent_headers": {
+                          "__serde_tag": "headers",
+                          "__serde_val": [
+                            ["accept", "*/*"],
+                            ["accept-encoding", "gzip, deflate, br, zstd"],
+                            ["accept-language", "en-US,en;q=0.9"],
+                            ["origin", "https://updraft.cyfrin.io"],
+                            ["referer", "https://updraft.cyfrin.io/"],
+                            [
+                              "sec-ch-ua",
+                              "\"Google Chrome\";v=\"141\", \"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"141\""
+                            ],
+                            ["sec-ch-ua-mobile", "?0"],
+                            ["sec-ch-ua-platform", "\"Windows\""],
+                            ["sec-fetch-dest", "empty"],
+                            ["sec-fetch-mode", "cors"],
+                            ["sec-fetch-site", "cross-site"],
+                            [
+                              "user-agent",
+                              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+                            ]
+                          ]
+                        },
+                        "thumbnail_url": {
+                          "__serde_tag": "none"
+                        },
+                        "title": {
+                          "__serde_tag": "none"
+                        },
+                        "type": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "m3u8"
+                        },
+                        "url": {
+                          "__serde_tag": "url",
+                          "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/g001bcFJOBddgVa2Bp6kuzlthed1fg8S012KtAcnI02B12784watRJzKHucUKbD8rPkJb004zQp9tkWlM54omGB00te5AEJJsLBJb/rendition.m3u8?cdn=fastly&expires=1760990400&skid=default&signature=NjhmNjlhMjVfMjY0OGQ3Y2Y0MjMwNjBlMWVlNDcyNWI4OTUwOTIxMmVhMzkxOWJhNTAxOWJlNmVlYjVkM2M3YTBjODRkMDlhNQ==&vsid=lmHpcMnzCQG01VGPOyMC1d9niQRwpS9F4966BDocmDkxRfb6501M562pZA6FpfRSmA51GG1ORow28"
+                        }
+                      }
+                    }
+                  ],
+                  [
+                    {
+                      "__serde_tag": "primitive",
+                      "__serde_val": "media_hash_6127798653280646"
+                    },
+                    {
+                      "__serde_tag": "object",
+                      "__serde_val": {
+                        "demuxer": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "mp4"
+                        },
+                        "discovery_timestamp_ms": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": 1760387127177
+                        },
+                        "duration": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": 346.48333
+                        },
+                        "has_drm": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": false
+                        },
+                        "hash": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "media_hash_6127798653280646"
+                        },
+                        "initiator": {
+                          "__serde_tag": "some",
+                          "__serde_val": {
+                            "__serde_tag": "url",
+                            "__serde_val": "https://updraft.cyfrin.io/"
+                          }
+                        },
+                        "is_youtube": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": false
+                        },
+                        "sent_headers": {
+                          "__serde_tag": "headers",
+                          "__serde_val": [
+                            ["accept", "*/*"],
+                            ["accept-encoding", "gzip, deflate, br, zstd"],
+                            ["accept-language", "en-US,en;q=0.9"],
+                            ["origin", "https://updraft.cyfrin.io"],
+                            ["referer", "https://updraft.cyfrin.io/"],
+                            [
+                              "sec-ch-ua",
+                              "\"Google Chrome\";v=\"141\", \"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"141\""
+                            ],
+                            ["sec-ch-ua-mobile", "?0"],
+                            ["sec-ch-ua-platform", "\"Windows\""],
+                            ["sec-fetch-dest", "empty"],
+                            ["sec-fetch-mode", "cors"],
+                            ["sec-fetch-site", "cross-site"],
+                            [
+                              "user-agent",
+                              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+                            ]
+                          ]
+                        },
+                        "thumbnail_url": {
+                          "__serde_tag": "none"
+                        },
+                        "title": {
+                          "__serde_tag": "none"
+                        },
+                        "type": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "m3u8"
+                        },
+                        "url": {
+                          "__serde_tag": "url",
+                          "__serde_val": "https://manifest-gcp-us-east1-vop1.fastly.mux.com/4wXlc3AODBLypSiB3KhFranSP2mr9EOBdw7018Z1h475JAW6bHEtA00f01fUOou2l4TMRCOl00GCOJpBSbMtPn3bQFyyg6r2WGAo/rendition.m3u8?cdn=fastly&expires=1760990400&skid=default&signature=NjhmNjlhMjVfYTdiZjU3NzdiMzVmMzI0OTgxNGVjYjU4MTNjMmQxOGNmOGQ4YjYyNmQzY2M1YjNhZmQ0OWVlNmJmNmEyNGVjYw==&vsid=lmHpcMnzCQG01VGPOyMC1d9niQRwpS9F4966BDocmDkxRfb6501M562pZA6FpfRSmA51GG1ORow28"
+                        }
+                      }
+                    }
+                  ]
+                ]
+              },
+              "meta": {
+                "__serde_tag": "some",
+                "__serde_val": {
+                  "__serde_tag": "object",
+                  "__serde_val": {
+                    "default_action": {
+                      "__serde_tag": "primitive",
+                      "__serde_val": "download"
+                    },
+                    "favicon_url": {
+                      "__serde_tag": "some",
+                      "__serde_val": {
+                        "__serde_tag": "url",
+                        "__serde_val": "https://updraft.cyfrin.io/favicon.svg"
+                      }
+                    },
+                    "incognito": {
+                      "__serde_tag": "primitive",
+                      "__serde_val": false
+                    },
+                    "smartnaming_rule": {
+                      "__serde_tag": "object",
+                      "__serde_val": {
+                        "max_length": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": 64
+                        },
+                        "selector": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": null
+                        },
+                        "template": {
+                          "__serde_tag": "primitive",
+                          "__serde_val": "%title"
+                        }
+                      }
+                    },
+                    "tab_id": {
+                      "__serde_tag": "primitive",
+                      "__serde_val": 1028973105
+                    },
+                    "thumbnail_url": {
+                      "__serde_tag": "some",
+                      "__serde_val": {
+                        "__serde_tag": "url",
+                        "__serde_val": "https://res.cloudinary.com/droqoz7lg/image/upload/q_auto/f_auto/v1/platform/og/updraft/09333c7b7984311495604be4924d0c9f9308476c?_a=DATAg1eAZAA0"
+                      }
+                    },
+                    "title": {
+                      "__serde_tag": "some",
+                      "__serde_val": {
+                        "__serde_tag": "primitive",
+                        "__serde_val": "Video: Blockchain Basics - Welcome to Updraft! - Blockchain Basics"
+                      }
+                    },
+                    "url": {
+                      "__serde_tag": "some",
+                      "__serde_val": {
+                        "__serde_tag": "url",
+                        "__serde_val": "https://updraft.cyfrin.io/courses/blockchain-basics/basics/welcome-to-updraft"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      ]
+    },
+    "downloading": {
+      "__serde_tag": "map",
+      "__serde_val": []
+    },
+    "notifications": {
+      "__serde_tag": "map",
+      "__serde_val": [
+        [
+          {
+            "__serde_tag": "primitive",
+            "__serde_val": "notification_limit_chromium"
+          },
+          {
+            "__serde_tag": "object",
+            "__serde_val": {
+              "type": {
+                "__serde_tag": "primitive",
+                "__serde_val": "limit_chromium"
+              }
+            }
+          }
+        ]
+      ]
+    },
+    "suspecting_saveas": {
+      "__serde_tag": "primitive",
+      "__serde_val": true
+    },
+    "transient_history": {
+      "__serde_tag": "array",
+      "__serde_val": [
+        {
+          "__serde_tag": "object",
+          "__serde_val": {
+            "browser_download_id": {
+              "__serde_tag": "primitive",
+              "__serde_val": 1299
+            },
+            "download_timestamp": {
+              "__serde_tag": "primitive",
+              "__serde_val": 1760331016526
+            },
+            "downloaded_id": {
+              "__serde_tag": "primitive",
+              "__serde_val": "ded_8c69e4d4-8c57-460b-808b-1a10ce28551e"
+            },
+            "has_drm": {
+              "__serde_tag": "primitive",
+              "__serde_val": false
+            },
+            "media_hash": {
+              "__serde_tag": "primitive",
+              "__serde_val": "media_hash_7321133361582893"
+            },
+            "origin_favicon_url": {
+              "__serde_tag": "primitive",
+              "__serde_val": "https://updraft.cyfrin.io/favicon.svg"
+            },
+            "origin_url": {
+              "__serde_tag": "primitive",
+              "__serde_val": "https://updraft.cyfrin.io/courses/solidity/ai-prompting/setting-up-github"
+            },
+            "path": {
+              "__serde_tag": "primitive",
+              "__serde_val": "C:\\Users\\fullendmaestro\\Downloads\\Video AI Prompting - Setting up Github - Solidity Smart Contract.mp4"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
