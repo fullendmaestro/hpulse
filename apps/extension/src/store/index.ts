@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { persistStore, persistReducer } from 'redux-persist'
-import type { Storage } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
 // import { localStorage } from 'redux-persist-webextension-storage'
 
@@ -9,22 +9,10 @@ import type { RootState } from './types'
 // Import slices
 import appReducer from './slices/appSlice'
 
-export const chromeStorageAdapter: Storage = {
-  setItem: (key, value) => {
-    return localStorage.setItem(key, value)
-  },
-  getItem: (key) => {
-    return localStorage.getItem(key)
-  },
-  removeItem: (key) => {
-    return localStorage.removeItem(key)
-  },
-}
-
 // Root persist config
 const rootPersistConfig = {
   key: 'appStore',
-  storage: chromeStorageAdapter,
+  storage,
 }
 
 // Combine reducers (no per-slice persistReducer)
@@ -59,3 +47,9 @@ export const selectAppState = (state: RootState) => state.app
 export const selectSettingsState = (state: RootState) => state.settings
 export const selectWalletState = (state: RootState) => state.wallet
 export const selectAIState = (state: RootState) => state.ai
+
+// Export the store hooks
+export * from './hooks'
+
+export * from './slices/appSlice'
+export * from './slices/settingsSlice'
