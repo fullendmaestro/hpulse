@@ -25,55 +25,68 @@ export interface SettingsState {
   theme: AppTheme
 }
 
-export interface ERC20Asset {
+// Base token interface
+export interface BaseToken {
   id: string
   name: string
   symbol: string
   decimals: number
   balance: string
-  tokenAddress: string
   current_price?: number
   price_change_24h?: number
   coinGeckoId?: string
   logoUrl: string
 }
 
+// ERC20 token (chain-specific)
+export interface ERC20Token extends BaseToken {
+  tokenAddress: string
+  chainSlug: string // which chain this token belongs to
+}
+
+// Native EVM token (e.g., ETH, MATIC, BNB)
+export interface EVMNativeToken extends BaseToken {
+  chainSlug: string // which chain this token belongs to
+  isNative: true
+}
+
+// NFT asset
 export interface ERC721Asset {
   id: string
   name: string
   symbol: string
   tokenId: string
+  tokenAddress: string
+  chainSlug: string
   owner: string
+  logoUrl?: string
 }
 
-export interface EVMTokenAsset {
-  id: string
-  name: string
-  symbol: string
-  decimals: number
-  balance: string
-  current_price?: number
-  price_change_24h?: number
-  coinGeckoId?: string
-  logoUrl: string
+// Chain balance summary
+export interface ChainBalance {
+  chainSlug: string
+  nativeToken: EVMNativeToken
+  erc20Tokens: ERC20Token[]
+  erc721Assets: ERC721Asset[]
+  totalBalance: string // Total USD value for this chain
 }
 
 export interface Wallet {
   id: string
   name: string
-  totalbalance: string
-
   publicKey: string
   privateKey: string
   address: string
 
-  erc20Assets: ERC20Asset[]
-  erc721Assets: ERC721Asset[]
-  evmTokenAssets: EVMTokenAsset[]
+  // Chain-specific balances
+  chainBalances: Record<string, ChainBalance> // key is chainSlug
+
+  // Aggregated total balance across all chains
+  totalBalance: string
 }
 
 export interface WalletState {
-  selectedWalletSlug: 'all'
+  selectedWalletSlug: string | 'all'
   wallets: Wallet[]
 }
 

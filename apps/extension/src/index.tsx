@@ -1,5 +1,6 @@
 import '@hpulse/ui/globals.css'
 import './styles.css'
+import './styles/styles_font.css'
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'

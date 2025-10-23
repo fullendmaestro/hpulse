@@ -10,7 +10,7 @@ export const BottomModalClose = () => {
   return (
     <DrawerClose asChild>
       <Button variant={'ghost'} size={'icon'} className="size-12">
-        <X size={18} />
+        <X weight="bold" size={18} />
       </Button>
     </DrawerClose>
   )

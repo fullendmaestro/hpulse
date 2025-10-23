@@ -1,4 +1,6 @@
 import { useWalletCheck } from '@/hooks/useWalletCheck'
+import BalanceSection from './BalanceSection'
+import TokensSection from './TokensSection'
 
 export default function Home() {
   const hasWallet = useWalletCheck()
@@ -9,40 +11,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col h-full p-4">
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
+      <BalanceSection />
+      <TokensSection />
     </div>
   )
 }

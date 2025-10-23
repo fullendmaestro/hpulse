@@ -42,20 +42,22 @@ export const GlobalLayout = (props: GlobalLayoutProps) => {
     window.innerWidth >= 450 && !isSidePanel && !dAppPages.has(props.location?.pathname ?? '')
 
   const isOnboarding = props.location?.pathname.includes('onboarding')
+  const isPopup = window.innerWidth < 450
 
   const isBottomNavVisible =
     auth?.locked && props.location?.pathname && showBottomNav(props.location.pathname)
 
   return (
-    <>
+    <div className={cn('w-full h-full', isFullScreen && 'flex items-center justify-center')}>
       {isFullScreen && <LayoutHeader />}
 
       <div
         className={cn(
-          'w-full h-full flex flex-col',
-          isOnboarding
-            ? 'max-w-[28rem] max-h-[38.875rem] m-auto bg-secondary border border-secondary-200 rounded-3xl'
-            : 'bg-secondary'
+          'flex flex-col',
+          isOnboarding &&
+            'max-w-[28rem] max-h-[38.875rem] bg-secondary border border-secondary-200 rounded-3xl',
+          isPopup ? 'w-full h-full' : 'w-[28rem] h-[37.5rem] rounded-3xl shadow-xl',
+          'bg-secondary'
         )}
       >
         <div
@@ -74,7 +76,7 @@ export const GlobalLayout = (props: GlobalLayoutProps) => {
           )}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

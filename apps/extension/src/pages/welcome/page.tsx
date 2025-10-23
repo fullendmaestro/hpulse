@@ -53,13 +53,11 @@ export default function Welcome() {
       const newWallet: WalletType = {
         id: uuidv4(),
         name: walletName.trim() || `Wallet ${Date.now()}`,
-        totalbalance: '0',
         publicKey: account.publicKey,
         privateKey: formattedPrivateKey,
         address: account.address,
-        erc20Assets: [],
-        erc721Assets: [],
-        evmTokenAssets: [],
+        chainBalances: {},
+        totalBalance: '0',
       }
 
       // Validate the derived address

@@ -12,6 +12,9 @@ const manifest: chrome.runtime.ManifestV3 = {
     },
     default_popup: './src/index.html',
   },
+  side_panel: {
+    default_path: './src/index.html',
+  },
   options_page: './src/index.html',
   background: {
     service_worker: './src/background/index.ts',

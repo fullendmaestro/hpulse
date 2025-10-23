@@ -73,13 +73,11 @@ const SelectWallet = ({ isVisible, onClose, title = 'Your Wallets' }: SelectWall
       const newWallet: WalletType = {
         id: uuidv4(),
         name: walletName.trim() || `Wallet ${wallets.length + 1}`,
-        totalbalance: '0',
         publicKey: account.publicKey,
         privateKey: formattedPrivateKey,
         address: account.address,
-        erc20Assets: [],
-        erc721Assets: [],
-        evmTokenAssets: [],
+        chainBalances: {},
+        totalBalance: '0',
       }
 
       if (!isAddress(newWallet.address)) {

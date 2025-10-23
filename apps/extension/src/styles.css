@@ -9,19 +9,31 @@ body,
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow: hidden;
 }
 
 body {
   background-color: #f7fcff;
-  min-height: 600px;
-  min-width: 400px;
-  max-height: 600px;
-  max-width: 400px;
+  overflow: auto;
 }
 
 .dark body {
   background-color: #000205;
+}
+
+/* Chrome extension popup specific styles */
+@media (max-width: 450px) {
+  html,
+  body,
+  #root {
+    overflow: hidden;
+  }
+
+  body {
+    min-height: 600px;
+    min-width: 400px;
+    max-height: 600px;
+    max-width: 400px;
+  }
 }
 
 html {
