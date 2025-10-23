@@ -1,12 +1,14 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { AppState, AuthenticatePayload } from '../types'
+import { evmNetworks } from '../../contants/networks'
 
 const initialState: AppState = {
   authenticated: false,
   passwordKeyContent: null,
   authenticating: false,
   onBoarded: false,
-  selected_network_name: 'all',
+  selected_network_slug: 'all',
+  networks: evmNetworks,
 }
 
 const appSlice = createSlice({
@@ -27,7 +29,7 @@ const appSlice = createSlice({
       state.onBoarded = action.payload
     },
     setSelectedNetwork: (state, action: PayloadAction<string>) => {
-      state.selected_network_name = action.payload
+      state.selected_network_slug = action.payload
     },
     resetMetaFox: () => initialState,
     resetApp: () => initialState,

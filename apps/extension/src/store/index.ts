@@ -8,6 +8,8 @@ import type { RootState } from './types'
 
 // Import slices
 import appReducer from './slices/appSlice'
+import settingsReducer from './slices/settingsSlice'
+import walletReducer from './slices/walletSlice'
 
 // Root persist config
 const rootPersistConfig = {
@@ -18,6 +20,8 @@ const rootPersistConfig = {
 // Combine reducers (no per-slice persistReducer)
 const rootReducer = combineReducers({
   app: appReducer,
+  settings: settingsReducer,
+  wallet: walletReducer,
 })
 
 // Wrap rootReducer with persistReducer

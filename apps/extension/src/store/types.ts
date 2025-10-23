@@ -2,12 +2,19 @@
 
 export type AppTheme = 'dark' | 'light' | 'system'
 
+export interface Network {
+  name: string
+  nameSlug: string
+  logoURL: string
+}
+
 export interface AppState {
   authenticated: boolean
-  selected_network_name: string
+  selected_network_slug: string
   authenticating: boolean
   passwordKeyContent: string | null
   onBoarded: boolean
+  networks: Network[]
 }
 
 export interface SettingsState {
@@ -39,15 +46,6 @@ export interface ERC721Asset {
   owner: string
 }
 
-export interface ERC2981Asset {
-  id: string
-  name: string
-  symbol: string
-  tokenId: string
-  owner: string
-  royaltyPercentage: number
-}
-
 export interface EVMTokenAsset {
   id: string
   name: string
@@ -60,90 +58,29 @@ export interface EVMTokenAsset {
   logoUrl: string
 }
 
-export interface WalletAccount {
-  derivationIndex?: number
-  name: string
+export interface Wallet {
   id: string
+  name: string
+  totalbalance: string
+
   publicKey: string
-  evmAddress: string
-  seiAddress: string
+  privateKey: string
+  address: string
+
   erc20Assets: ERC20Asset[]
   erc721Assets: ERC721Asset[]
-  erc2981Assets: ERC2981Asset[]
   evmTokenAssets: EVMTokenAsset[]
 }
 
-export interface Wallet {
-  balance: string
-  id: string
-  name: string
-  type: 'mnemonic' | 'private key'
-  cypherStoreId: string
-}
-
 export interface WalletState {
-  selectedWalletId: string
-  selectedAccountId: string
-  lastRefresh: number
-  refreshing: boolean
-  switching: boolean
-  wallets: { [key: string]: Wallet }
-  walletsAccounts: { [walletId: string]: { [accountId: string]: WalletAccount } }
-}
-
-// AI Configuration and State (imported from aiSlice)
-export interface CustomMCPs {
-  [key: string]: any
+  selectedWalletSlug: 'all'
+  wallets: Wallet[]
 }
 
 export interface AIState {
   model: 'gemini-1.5-flash' | 'gemini-1.5-pro'
   googleApiKey?: string
-  mcps: CustomMCPs
-}
-
-// Action Payload Types
-export interface AuthenticatePayload {
-  authenticated: boolean
-}
-
-export interface AddWalletPayload {
-  wallet: Wallet
-}
-
-export interface UpdateWalletPayload {
-  walletId: string
-  wallet: Partial<Wallet>
-}
-
-export interface RemoveWalletPayload {
-  walletId: string
-}
-
-export interface SelectWalletPayload {
-  walletId: string
-}
-
-export interface AddAccountPayload {
-  walletId: string
-  account: WalletAccount
-}
-
-export interface UpdateAccountPayload {
-  walletId: string
-  accountId: string
-  account: Partial<WalletAccount>
-}
-
-export interface SelectAccountPayload {
-  accountId: string
-}
-
-export interface UpdateBalancePayload {
-  walletId: string
-  accountId: string
-  coinId: string
-  balance: string
+  mcps: any[]
 }
 
 export interface RootState {

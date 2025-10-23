@@ -1,26 +1,32 @@
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f7fcff;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-
-  min-height: 600px;
+.panel-width {
   min-width: 400px;
 }
 
-.dark .body {
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: #f7fcff;
+  min-height: 600px;
+  min-width: 400px;
+  max-height: 600px;
+  max-width: 400px;
+}
+
+.dark body {
   background-color: #000205;
 }
 
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(34, 34, 34, 0.05) transparent;
-  min-height: 0px;
-  min-width: 0px;
 }
 
 /* For Webkit browsers */

@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react'
 import { SparkleIcon, FileQuestionIcon } from 'lucide-react'
+import type { Location } from 'react-router-dom'
 import { cn } from '@hpulse/ui/lib/utils'
 import { Button } from './components/ui/button'
 import { useAuth } from './hooks/useAuth'
 import { isSidePanel } from './utils/ui'
 import BottomNav from './components/bottom-nav'
+import { GeneralHeader } from './header'
 
 type GlobalLayoutProps = {
   children?: ReactNode
@@ -20,7 +22,13 @@ const showBottomNav = (path?: string) => {
     return false
   }
 
-  if (path.includes('onboarding') || path === '/' || path.includes('forgotPassword')) {
+  if (
+    path.includes('onboarding') ||
+    path === '/' ||
+    path === '/welcome' ||
+    path === '/chat' ||
+    path.includes('forgotPassword')
+  ) {
     return false
   }
 
@@ -44,21 +52,27 @@ export const GlobalLayout = (props: GlobalLayoutProps) => {
 
       <div
         className={cn(
-          'max-w-full relative m-auto flex flex-col overflow-hidden',
+          'w-full h-full flex flex-col',
           isOnboarding
-            ? 'h-[38.875rem] w-[28rem] bg-secondary border border-secondary-200 rounded-3xl'
-            : 'bg-secondary min-h-[37.5rem] h-full'
+            ? 'max-w-[28rem] max-h-[38.875rem] m-auto bg-secondary border border-secondary-200 rounded-3xl'
+            : 'bg-secondary'
         )}
       >
         <div
           key={props.location?.pathname}
           id="popup-layout"
-          className="flex-1 h-[37.5rem] overflow-auto flex flex-col"
+          className="flex flex-col h-full w-full overflow-hidden"
         >
-          {props.children}
+          <div className="flex-shrink-0">
+            <GeneralHeader />
+          </div>
+          <div className="flex-1 overflow-y-auto overflow-x-hidden">{props.children}</div>
+          {isBottomNavVisible && (
+            <div className="flex-shrink-0">
+              <BottomNav />
+            </div>
+          )}
         </div>
-
-        {isBottomNavVisible && <BottomNav />}
       </div>
     </>
   )
