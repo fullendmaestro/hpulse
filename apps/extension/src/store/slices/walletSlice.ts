@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { WalletState, Wallet, ChainBalance } from '../types'
+import { evmNetworks } from '@/contants/networks'
 
 const initialState: WalletState = {
   selectedWalletSlug: 'all',
@@ -14,10 +15,34 @@ const walletSlice = createSlice({
     addWallet: (state, action: PayloadAction<Wallet>) => {
       const wallet = action.payload
 
-      // Initialize chainBalances if not provided
+      // Initialize chainBalances with all networks and their native currencies
       if (!wallet.chainBalances) {
         wallet.chainBalances = {}
       }
+
+      // Add all networks with zero balance native tokens
+      evmNetworks.forEach((network) => {
+        if (!wallet.chainBalances[network.nameSlug]) {
+          wallet.chainBalances[network.nameSlug] = {
+            chainSlug: network.nameSlug,
+            nativeToken: {
+              id: `${network.nameSlug}-${network.nativeCurrency.symbol.toLowerCase()}`,
+              name: network.nativeCurrency.name,
+              symbol: network.nativeCurrency.symbol,
+              decimals: network.nativeCurrency.decimals,
+              balance: '0',
+              chainSlug: network.nameSlug,
+              isNative: true,
+              logoUrl: network.logoURL,
+              current_price: 0,
+              price_change_24h: 0,
+            },
+            erc20Tokens: [],
+            erc721Assets: [],
+            totalBalance: '0',
+          }
+        }
+      })
 
       // Initialize totalBalance if not provided
       if (!wallet.totalBalance) {

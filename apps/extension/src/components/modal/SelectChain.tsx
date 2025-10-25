@@ -7,6 +7,7 @@ import { CheckCircle, Plus } from 'lucide-react'
 import { cn } from '@hpulse/ui/lib/utils'
 import { useState } from 'react'
 import { toast } from 'sonner'
+import { allNetworksCompositeLogos } from '@/contants/networks'
 
 const SelectChain = ({ isVisible, onClose }: { isVisible: boolean; onClose: VoidFunction }) => {
   const dispatch = useAppDispatch()
@@ -25,6 +26,26 @@ const SelectChain = ({ isVisible, onClose }: { isVisible: boolean; onClose: Void
     onClose()
     toast.success('Chain switched successfully')
   }
+
+  // Render composite icon for "All" networks
+  const renderAllNetworksIcon = () => (
+    <div className="relative h-8 w-8">
+      <div className="grid grid-cols-2 gap-[1px] h-full w-full">
+        {allNetworksCompositeLogos.map((logo, index) => (
+          <img
+            key={index}
+            src={logo}
+            alt=""
+            className="h-full w-full object-cover rounded-full"
+            style={{
+              gridArea:
+                index === 0 ? '1 / 1' : index === 1 ? '1 / 2' : index === 2 ? '2 / 1' : '2 / 2',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
 
   return (
     <>
@@ -53,6 +74,35 @@ const SelectChain = ({ isVisible, onClose }: { isVisible: boolean; onClose: Void
           </div>
 
           <div className="space-y-3">
+            {/* All Networks Option */}
+            {!searchQuery && (
+              <div
+                className={cn(
+                  'bg-secondary-100 hover:bg-secondary-200 rounded-xl w-full transition-colors'
+                  // selected_network === 'all' && 'ring-2 ring-primary'
+                )}
+              >
+                <div
+                  onClick={() => handleSelectChain('all')}
+                  className="flex flex-1 items-center px-4 py-3.5 cursor-pointer relative"
+                >
+                  <div className="flex items-center flex-1 gap-3">
+                    {renderAllNetworksIcon()}
+
+                    <Text size="sm" className="font-bold text-foreground">
+                      All Networks
+                    </Text>
+                  </div>
+
+                  <div className="ml-auto flex items-center">
+                    {selected_network === 'all' && (
+                      <CheckCircle size={24} className="ml-2 text-green-500 flex-shrink-0" />
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
             {filteredChains.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground">
                 No chains found matching your search
@@ -64,8 +114,8 @@ const SelectChain = ({ isVisible, onClose }: { isVisible: boolean; onClose: Void
                   <div
                     key={chain.nameSlug}
                     className={cn(
-                      'bg-secondary-100 hover:bg-secondary-200 rounded-xl w-full transition-colors',
-                      isSelected && 'ring-2 ring-primary'
+                      'bg-secondary-100 hover:bg-secondary-200 rounded-xl w-full transition-colors'
+                      // isSelected && 'ring-2 ring-primary'
                     )}
                   >
                     <div

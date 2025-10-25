@@ -1,14 +1,21 @@
-import React, { useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { cn, sliceWord } from '@hpulse/ui/lib/utils'
-import { ChevronDown, Menu, Sparkle, ArrowLeft, Plus } from 'lucide-react'
+import { ChevronDown, Menu, Sparkle, ArrowLeft, History } from 'lucide-react'
 import { PageHeader } from '@/components/header'
 import { useSelectedChain, useWallet } from '@/store'
 import SelectWallet from './components/modal/SelectWallet'
 import SelectChain from './components/modal/SelectChain'
+import { ChatHistoryModal } from './components/ChatHistoryModal'
+import { allNetworksCompositeLogos } from '@/contants/networks'
 
-export const GeneralHeader = (props: { disableWalletButton?: boolean }) => {
+export const GeneralHeader = (props: {
+  disableWalletButton?: boolean
+  currentSessionId?: string | null
+  onSessionSelect?: (sessionId: string) => void
+  onNewSession?: () => void
+}) => {
   const selectedChain = useSelectedChain()
   const { wallets, selectedWalletSlug } = useWallet()
   const location = useLocation()
@@ -16,6 +23,7 @@ export const GeneralHeader = (props: { disableWalletButton?: boolean }) => {
 
   const [showSelectWallet, setShowSelectWallet] = useState(false)
   const [showSelectChain, setShowSelectChain] = useState(false)
+  const [showChatHistory, setShowChatHistory] = useState(false)
 
   // Determine if we're on the chat page
   const isChatPage = location.pathname === '/chat'
@@ -37,13 +45,40 @@ export const GeneralHeader = (props: { disableWalletButton?: boolean }) => {
   }
 
   const handleRightIconClick = () => {
-    if (isChatPage) {
-      // Handle new chat or action
-      console.log('New chat action')
-    } else {
+    if (!isChatPage) {
       // Navigate to chat
       navigate('/chat')
     }
+    // For chat page, the history modal is handled by ChatHistoryModal component
+  }
+
+  // Render composite icon for "All" networks
+  const renderNetworkIcon = () => {
+    if (!selectedChain) {
+      // "All Networks" case
+      return (
+        <div className="relative size-5">
+          <div className="grid grid-cols-2 gap-[0.5px] h-full w-full">
+            {allNetworksCompositeLogos.map((logo, index) => (
+              <img
+                key={index}
+                src={logo}
+                alt=""
+                className="h-full w-full object-cover rounded-full"
+              />
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    return (
+      <img
+        src={selectedChain.logoURL}
+        alt={selectedChain.name}
+        className="size-5 rounded-full overflow-hidden object-cover"
+      />
+    )
   }
 
   return (
@@ -58,12 +93,21 @@ export const GeneralHeader = (props: { disableWalletButton?: boolean }) => {
           </button>
           <div className="h-5 w-px bg-secondary-300" />
 
-          <button
-            className="py-2 pl-1.5 pr-2.5 text-foreground/75 hover:text-foreground transition-colors"
-            onClick={handleRightIconClick}
-          >
-            {isChatPage ? <Plus size={20} /> : <Sparkle size={20} />}
-          </button>
+          {isChatPage ? (
+            <button
+              className="py-2 pl-1.5 pr-2.5 text-foreground/75 hover:text-foreground transition-colors"
+              onClick={() => setShowChatHistory(true)}
+            >
+              <History size={20} />
+            </button>
+          ) : (
+            <button
+              className="py-2 pl-1.5 pr-2.5 text-foreground/75 hover:text-foreground transition-colors"
+              onClick={handleRightIconClick}
+            >
+              <Sparkle size={20} />
+            </button>
+          )}
         </div>
 
         <button
@@ -91,11 +135,7 @@ export const GeneralHeader = (props: { disableWalletButton?: boolean }) => {
           onClick={() => setShowSelectChain(true)}
           className="bg-secondary-200 hover:bg-secondary-300 rounded-full px-3 py-2 transition-colors flex items-center gap-1"
         >
-          <img
-            src={selectedChain?.logoURL}
-            alt={selectedChain?.name}
-            className={'size-5 rounded-full overflow-hidden object-cover'}
-          />
+          {renderNetworkIcon()}
           <ChevronDown className="size-4 text-muted-foreground" />
         </button>
       </PageHeader>
@@ -103,6 +143,16 @@ export const GeneralHeader = (props: { disableWalletButton?: boolean }) => {
       <SelectWallet isVisible={showSelectWallet} onClose={() => setShowSelectWallet(false)} />
 
       <SelectChain isVisible={showSelectChain} onClose={() => setShowSelectChain(false)} />
+
+      {isChatPage && (
+        <ChatHistoryModal
+          isVisible={showChatHistory}
+          onClose={() => setShowChatHistory(false)}
+          currentSessionId={props.currentSessionId}
+          onSessionSelect={props.onSessionSelect || (() => {})}
+          onNewSession={props.onNewSession || (() => {})}
+        />
+      )}
     </>
   )
 }

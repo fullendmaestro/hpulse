@@ -147,8 +147,8 @@ const SelectWallet = ({ isVisible, onClose, title = 'Your Wallets' }: SelectWall
                     key={wallet.id}
                     onClick={() => handleSelectWallet(wallet.id)}
                     className={cn(
-                      'bg-secondary-100 hover:bg-secondary-200 rounded-xl w-full cursor-pointer transition-colors',
-                      isSelected && 'ring-2 ring-primary'
+                      'bg-secondary-100 hover:bg-secondary-200 rounded-xl w-full cursor-pointer transition-colors'
+                      // isSelected && 'ring-2 ring-primary'
                     )}
                   >
                     <div className="flex items-center px-4 py-3.5 gap-3">

@@ -12,6 +12,11 @@ export const useWallet = () => useAppSelector((state) => state.wallet)
 export const useAI = () => useAppSelector((state) => state.ai)
 
 export const useSelectedChain = () =>
-  useAppSelector((state) =>
-    state.app.networks.find((network) => network.nameSlug == state.app.selected_network_slug)
-  )
+  useAppSelector((state) => {
+    if (state.app.selected_network_slug === 'all') {
+      return null // Return null for "All Networks"
+    }
+    return state.app.networks.find(
+      (network) => network.nameSlug === state.app.selected_network_slug
+    )
+  })

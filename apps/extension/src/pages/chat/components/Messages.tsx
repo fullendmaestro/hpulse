@@ -1,10 +1,6 @@
+import type { Message } from '@/types'
 import { useEffect, useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
-
-export type Message = {
-  content: string
-  role: 'user' | 'bot'
-}
 
 type Props = {
   messages: Message[]
@@ -33,7 +29,7 @@ const ChatMessages = ({ messages }: Props) => {
           onCopy={onCopyMessage}
           ref={index === messages.length - 1 ? lastMessageRef : null}
           className={`px-3 py-1 max-w-3xs text-base rounded-xl prose ${
-            message.role === 'user'
+            message.type === 'user'
               ? 'bg-blue-600 text-white self-end'
               : 'bg-gray-100 text-black self-start'
           }`}

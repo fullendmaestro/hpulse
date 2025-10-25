@@ -1,176 +1,112 @@
 'use client'
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { toast } from 'sonner'
-import {
-  type AgentListItemDto,
-  type AgentsListResponseDto,
-  Api,
-  type EventItemDto,
-  type EventsResponseDto,
-} from '../Api'
+import { HpulseAgentAPI } from '@/api/agent-api'
 import type { Message } from '@/types'
-import { useApiUrl } from './use-api-url'
+
+const agentApi = new HpulseAgentAPI('http://localhost:3000')
 
 export function useAgents(currentSessionId?: string | null) {
   const queryClient = useQueryClient()
-  const apiUrl = useApiUrl()
-  const apiClient = useMemo(() => new Api({ baseUrl: apiUrl }), [apiUrl])
-  const [selectedAgent, setSelectedAgent] = useState<AgentListItemDto | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
 
-  // Fetch available agents
+  // Fetch agent status (no need for agent list, single agent)
   const {
-    data: agents = [],
+    data: agentStatus,
     isLoading: loading,
     error,
     refetch: refreshAgents,
   } = useQuery({
-    queryKey: ['agents', apiUrl],
-    queryFn: async (): Promise<AgentListItemDto[]> => {
-      if (!apiClient) throw new Error('API URL is required')
-      const res = await apiClient.api.agentsControllerListAgents()
-      const data: AgentsListResponseDto = res.data
-      return data.agents
+    queryKey: ['agent-status'],
+    queryFn: async () => {
+      return await agentApi.getStatus()
     },
-    enabled: !!apiClient,
     staleTime: 30000,
     retry: 2,
   })
 
-  // Fetch messages for selected agent and session by transforming events → messages
-  const { data: sessionEvents } = useQuery({
-    queryKey: ['agent-messages', apiUrl, selectedAgent?.relativePath, currentSessionId],
-    queryFn: async (): Promise<EventsResponseDto> => {
-      if (!apiClient || !selectedAgent || !currentSessionId) {
-        return { events: [], totalCount: 0 }
+  // Fetch messages for current session
+  const { data: sessionMessages, refetch: refetchMessages } = useQuery({
+    queryKey: ['agent-messages', currentSessionId],
+    queryFn: async (): Promise<Message[]> => {
+      if (!currentSessionId) {
+        return []
       }
-      const res = await apiClient.api.eventsControllerGetEvents(
-        encodeURIComponent(selectedAgent.relativePath),
-        currentSessionId
-      )
-      return res.data as EventsResponseDto
+      const response = await agentApi.getMessages(currentSessionId, 1, 100)
+
+      // Transform messages to match UI format
+      const messages: Message[] = response.messages.map((msg, index) => ({
+        id: index + 1, // Convert string ID to sequential number for UI
+        type: msg.role,
+        content: msg.content,
+        timestamp: new Date(msg.createdAt),
+        author: msg.role,
+      }))
+
+      return messages
     },
-    enabled: !!apiClient && !!selectedAgent && !!currentSessionId,
-    staleTime: 10000,
+    enabled: !!currentSessionId,
+    staleTime: 2000,
+    refetchInterval: 2000, // Poll every 2 seconds
   })
 
-  // Update messages when events change
-  useEffect(() => {
-    if (sessionEvents?.events && selectedAgent) {
-      const asMessages: Message[] = sessionEvents.events
-        .map((ev: EventItemDto, index: number) => {
-          const content = ev.content as any
-          const textParts = Array.isArray(content?.parts)
-            ? content.parts
-                .filter(
-                  (p: any) => typeof p === 'object' && 'text' in p && typeof p.text === 'string'
-                )
-                .map((p: any) => p.text)
-            : []
-          const text = textParts.join('').trim()
-          return {
-            id: index + 1,
-            type: ev.author === 'user' ? 'user' : 'assistant',
-            content: text,
-            timestamp: new Date(ev.timestamp * 1000),
-            author: ev.author,
-          } as Message
-        })
-        .filter((m: Message) => m.content.length > 0)
-
-      setMessages(asMessages)
-      if (asMessages.length > 0) {
-      }
+  // Update local messages state when session messages change
+  useMemo(() => {
+    if (sessionMessages) {
+      setMessages(sessionMessages)
     }
-  }, [sessionEvents, selectedAgent])
+  }, [sessionMessages])
 
   // Send message mutation
   const sendMessageMutation = useMutation({
     mutationFn: async ({
-      agent,
       message,
       attachments,
+      network,
     }: {
-      agent: AgentListItemDto
       message: string
       attachments?: File[]
+      network?: string
     }) => {
       const userMessage: Message = {
         id: Date.now(),
         type: 'user',
         content: message,
         timestamp: new Date(),
+        author: 'user',
       }
       setMessages((prev) => [...prev, userMessage])
 
-      // Client-side guardrails for attachments
-      const MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024 // 20MB default client cap
-
-      let encodedAttachments: Array<{ name: string; mimeType: string; data: string }> | undefined
+      // TODO: Handle attachments when agent server supports them
       if (attachments && attachments.length > 0) {
-        // Size filter with toast notifications
-        const tooLarge = attachments.filter((f) => f.size > MAX_FILE_SIZE_BYTES)
-        if (tooLarge.length > 0) {
-          toast.error(
-            `Some files exceed ${Math.round(MAX_FILE_SIZE_BYTES / (1024 * 1024))}MB and were skipped: ${tooLarge
-              .map((f) => f.name)
-              .join(', ')}`
-          )
-        }
-        const filesToProcess = attachments.filter((f) => f.size <= MAX_FILE_SIZE_BYTES)
-
-        const fileToBase64 = (file: File) =>
-          new Promise<string>((resolve, reject) => {
-            const reader = new FileReader()
-            reader.onload = () => {
-              const result = reader.result as string
-              const base64 = result.includes(',') ? result.split(',')[1] : result
-              resolve(base64)
-            }
-            reader.onerror = () => reject(reader.error)
-            reader.readAsDataURL(file)
-          })
-
-        encodedAttachments = await Promise.all(
-          filesToProcess.map(async (file) => {
-            const mimeType =
-              file.type && file.type !== 'application/octet-stream' ? file.type : 'text/plain'
-            return {
-              name: file.name,
-              mimeType,
-              data: await fileToBase64(file),
-            }
-          })
-        )
+        toast.error('File attachments are not yet supported')
       }
 
-      const body = { message, attachments: encodedAttachments }
-
-      if (!apiClient) throw new Error('API client not ready')
       try {
-        const res = await apiClient.api.messagingControllerPostAgentMessage(
-          encodeURIComponent(agent.relativePath),
-          body
-        )
-        return res.data
+        const response = await agentApi.sendMessage({
+          sessionId: currentSessionId || undefined,
+          message,
+          network,
+        })
+        return response
       } catch (e: any) {
         setMessages((prev) => prev.filter((m) => m.id !== userMessage.id))
-        const msg =
-          e?.message || ('status' in (e ?? {}) && (e as any).statusText) || 'Failed to send message'
+        const msg = e?.message || 'Failed to send message'
         toast.error(msg)
         throw new Error(msg)
       }
     },
-    onSuccess: () => {
-      // Refresh session events and derived messages
-      if (currentSessionId && selectedAgent) {
+    onSuccess: (response) => {
+      // Refetch messages
+      if (response.sessionId) {
         queryClient.invalidateQueries({
-          queryKey: ['events', apiUrl, selectedAgent.relativePath, currentSessionId],
+          queryKey: ['agent-messages', response.sessionId],
         })
+        // Also invalidate sessions list
         queryClient.invalidateQueries({
-          queryKey: ['agent-messages', apiUrl, selectedAgent.relativePath, currentSessionId],
+          queryKey: ['sessions'],
         })
       }
     },
@@ -180,51 +116,22 @@ export function useAgents(currentSessionId?: string | null) {
     },
   })
 
-  const selectAgent = useCallback(
-    (agent: AgentListItemDto) => {
-      // Cancel in-flight queries tied to the previous agent to avoid races
-      if (selectedAgent) {
-        try {
-          queryClient.cancelQueries({
-            queryKey: ['events', apiUrl, selectedAgent.relativePath],
-          })
-          queryClient.cancelQueries({
-            queryKey: ['agent-messages', apiUrl, selectedAgent.relativePath],
-          })
-          queryClient.cancelQueries({
-            queryKey: ['sessions', apiUrl, selectedAgent.relativePath],
-          })
-        } catch {}
-      }
-      setSelectedAgent(agent)
-      setMessages([])
-    },
-    [apiUrl, queryClient, selectedAgent]
-  )
-
   const sendMessage = useCallback(
     (message: string, attachments?: File[]) => {
-      if (!selectedAgent) return
-      sendMessageMutation.mutate({
-        agent: selectedAgent,
-        message,
-        attachments,
-      })
+      sendMessageMutation.mutate({ message, attachments })
     },
-    [selectedAgent, sendMessageMutation]
+    [sendMessageMutation]
   )
 
   return {
-    agents,
-    selectedAgent,
+    agentStatus,
     messages,
-    agentStatus: {},
-    connected: !!apiUrl,
+    connected: true, // Always connected to local server
     loading,
     error,
     sendMessage,
-    selectAgent,
     refreshAgents,
+    refetchMessages,
     isSendingMessage: sendMessageMutation.isPending,
   }
 }

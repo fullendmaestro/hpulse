@@ -23,7 +23,7 @@ const TokensSection = () => {
   }
 
   return (
-    <section className="flex flex-col w-full px-5 pb-20">
+    <section className="flex flex-col w-full pb-20">
       <header className="flex items-center justify-between mb-3">
         <span className="text-sm font-bold">Your tokens</span>
 

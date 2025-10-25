@@ -9,6 +9,8 @@ const initialState: AppState = {
   onBoarded: false,
   selected_network_slug: 'all',
   networks: evmNetworks,
+  currentSessionId: null,
+  selectedAgentPath: null,
 }
 
 const appSlice = createSlice({
@@ -31,6 +33,12 @@ const appSlice = createSlice({
     setSelectedNetwork: (state, action: PayloadAction<string>) => {
       state.selected_network_slug = action.payload
     },
+    setCurrentSessionId: (state, action: PayloadAction<string | null>) => {
+      state.currentSessionId = action.payload
+    },
+    setSelectedAgentPath: (state, action: PayloadAction<string | null>) => {
+      state.selectedAgentPath = action.payload
+    },
     resetMetaFox: () => initialState,
     resetApp: () => initialState,
   },
@@ -42,6 +50,8 @@ export const {
   setAuthenticating,
   setOnBoarded,
   setSelectedNetwork,
+  setCurrentSessionId,
+  setSelectedAgentPath,
   resetMetaFox,
   resetApp,
 } = appSlice.actions

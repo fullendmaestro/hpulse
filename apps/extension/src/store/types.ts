@@ -1,9 +1,9 @@
 // Redux store types for the metafox sei wallet extension
+import type { Chain } from 'viem/chains'
 
 export type AppTheme = 'dark' | 'light' | 'system'
 
-export interface Network {
-  name: string
+export type Network = Chain & {
   nameSlug: string
   logoURL: string
 }
@@ -15,6 +15,12 @@ export interface AppState {
   passwordKeyContent: string | null
   onBoarded: boolean
   networks: Network[]
+  currentSessionId: string | null
+  selectedAgentPath: string | null
+}
+
+export interface AuthenticatePayload {
+  authenticated: boolean
 }
 
 export interface SettingsState {

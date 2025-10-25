@@ -1,11 +1,11 @@
 # EVM MCP Server
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![EVM Networks](https://img.shields.io/badge/Networks-30+-green)
+![EVM Networks](https://img.shields.io/badge/Networks-10_Testnets-green)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6)
 ![Viem](https://img.shields.io/badge/Viem-1.0+-green)
 
-A comprehensive Model Context Protocol (MCP) server that provides blockchain services across multiple EVM-compatible networks. This server enables AI agents to interact with Ethereum, Optimism, Arbitrum, Base, Polygon, and many other EVM chains with a unified interface.
+A comprehensive Model Context Protocol (MCP) server that provides blockchain services across multiple EVM-compatible testnet networks. This server enables AI agents to interact with Polygon, Optimism, Arbitrum, Base, Avalanche, and other EVM chain testnets with a unified interface.
 
 ## 📋 Contents
 
@@ -32,7 +32,7 @@ The MCP EVM Server leverages the Model Context Protocol to provide blockchain se
 - Interacting with smart contracts
 - Transferring tokens (native, ERC20, ERC721, ERC1155)
 - Querying token metadata and balances
-- Chain-specific services across 30+ EVM networks
+- Chain-specific services across 10 EVM testnet networks
 - **ENS name resolution** for all address parameters (use human-readable names like 'vitalik.eth' instead of addresses)
 
 All services are exposed through a consistent interface of MCP tools and resources, making it easy for AI agents to discover and use blockchain functionality. **Every tool that accepts Ethereum addresses also supports ENS names**, automatically resolving them to addresses behind the scenes.
@@ -83,64 +83,22 @@ All services are exposed through a consistent interface of MCP tools and resourc
 
 ## 🌐 Supported Networks
 
-### Mainnets
-- Ethereum (ETH)
-- Optimism (OP)
-- Arbitrum (ARB)
-- Arbitrum Nova
-- Base
-- Polygon (MATIC)
-- Polygon zkEVM
-- Avalanche (AVAX)
-- Binance Smart Chain (BSC)
-- zkSync Era
-- Linea
-- Celo
-- Gnosis (xDai)
-- Fantom (FTM)
-- Filecoin (FIL)
-- Moonbeam
-- Moonriver
-- Cronos
-- Scroll
-- Mantle
-- Manta
-- Blast
-- Fraxtal
-- Mode
-- Metis
-- Kroma
-- Zora
-- Aurora
-- Canto
-- Flow
-- Lumia
+This server currently supports EVM testnet chains that correspond to the following mainnet networks:
 
-### Testnets
-- Sepolia
-- Optimism Sepolia
-- Arbitrum Sepolia
-- Base Sepolia
-- Polygon Amoy
-- Avalanche Fuji
-- BSC Testnet
-- zkSync Sepolia
-- Linea Sepolia
-- Scroll Sepolia
-- Mantle Sepolia
-- Manta Sepolia
-- Blast Sepolia
-- Fraxtal Testnet
-- Mode Testnet
-- Metis Sepolia
-- Kroma Sepolia
-- Zora Sepolia
-- Celo Alfajores
-- Goerli
-- Holesky
-- Flow Testnet
-- Filecoin Calibration
-- Lumia Testnet
+### Supported Testnets
+
+- **Polygon Amoy** (80002) - Polygon testnet
+- **Optimism Sepolia** (11155420) - Optimism testnet
+- **Arbitrum Sepolia** (421614) - Arbitrum testnet
+- **Base Sepolia** (84532) - Base testnet
+- **Avalanche Fuji** (43113) - Avalanche testnet
+- **BSC Testnet** (97) - Binance Smart Chain testnet
+- **zkSync Sepolia** (300) - zkSync Era testnet
+- **Blast Sepolia** (168587773) - Blast testnet
+- **Celo Alfajores** (44787) - Celo testnet
+- **Zora Sepolia** (999999999) - Zora testnet
+
+> **Note**: This server is configured to work with testnet networks only. Each testnet corresponds to its respective mainnet network and can be used for development and testing purposes.
 
 ## 🛠️ Prerequisites
 
@@ -165,7 +123,7 @@ npm install
 
 The server uses the following default configuration:
 
-- **Default Chain ID**: 1 (Ethereum Mainnet)
+- **Default Chain ID**: 11155420 (Optimism Sepolia)
 - **Server Port**: 3001
 - **Server Host**: 0.0.0.0 (accessible from any network interface)
 
@@ -240,18 +198,11 @@ For a more portable configuration that you can share with your team or use acros
   "mcpServers": {
     "evm-mcp-server": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@mcpdotdirect/evm-mcp-server"
-      ]
+      "args": ["-y", "@mcpdotdirect/evm-mcp-server"]
     },
     "evm-mcp-http": {
       "command": "npx",
-      "args": [
-        "-y", 
-        "@mcpdotdirect/evm-mcp-server", 
-        "--http"
-      ]
+      "args": ["-y", "@mcpdotdirect/evm-mcp-server", "--http"]
     }
   }
 }
@@ -278,11 +229,13 @@ If you're developing a web application and want to connect to the HTTP server wi
 ```
 
 This connects directly to the HTTP server's SSE endpoint, which is useful for:
+
 - Web applications that need to connect to the MCP server from the browser
 - Environments where running local commands isn't ideal
 - Sharing a single MCP server instance among multiple users or applications
 
 To use this configuration:
+
 1. Create a `.cursor` directory in your project root if it doesn't exist
 2. Save the above JSON as `mcp.json` in the `.cursor` directory
 3. Restart Cursor or open your project
@@ -299,27 +252,26 @@ After configuring the MCP server with `mcp.json`, you can easily use it in Curso
 async function main() {
   try {
     // Get ETH balance for an address using ENS
-    console.log("Getting ETH balance for vitalik.eth...");
-    
+    console.log('Getting ETH balance for vitalik.eth...')
+
     // When using with Cursor, you can simply ask Cursor to:
     // "Check the ETH balance of vitalik.eth on mainnet"
     // Or "Transfer 0.1 ETH from my wallet to vitalik.eth"
-    
-    // Cursor will use the MCP server to execute these operations 
+
+    // Cursor will use the MCP server to execute these operations
     // without requiring any additional code from you
-    
+
     // This is the power of the MCP integration - your AI assistant
     // can directly interact with blockchain data and operations
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error('Error:', error.message)
   }
 }
 
-main();
+main()
 ```
 
 2. With the file open in Cursor, you can ask Cursor to:
-
    - "Check the current ETH balance of vitalik.eth"
    - "Look up the price of USDC on Ethereum"
    - "Show me the latest block on Optimism"
@@ -345,15 +297,15 @@ claude
 
 ```javascript
 // Example of using the MCP client to check a token balance using ENS
-const mcp = new McpClient("http://localhost:3000");
+const mcp = new McpClient('http://localhost:3000')
 
-const result = await mcp.invokeTool("get-token-balance", {
-  tokenAddress: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", // USDC on Ethereum
-  ownerAddress: "vitalik.eth", // ENS name instead of address
-  network: "ethereum"
-});
+const result = await mcp.invokeTool('get-token-balance', {
+  tokenAddress: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', // USDC on Ethereum
+  ownerAddress: 'vitalik.eth', // ENS name instead of address
+  network: 'ethereum',
+})
 
-console.log(result);
+console.log(result)
 // {
 //   tokenAddress: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
 //   owner: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
@@ -369,14 +321,14 @@ console.log(result);
 
 ```javascript
 // Example of using the MCP client to resolve an ENS name to an address
-const mcp = new McpClient("http://localhost:3000");
+const mcp = new McpClient('http://localhost:3000')
 
-const result = await mcp.invokeTool("resolve-ens", {
-  ensName: "vitalik.eth",
-  network: "ethereum"
-});
+const result = await mcp.invokeTool('resolve-ens', {
+  ensName: 'vitalik.eth',
+  network: 'ethereum',
+})
 
-console.log(result);
+console.log(result)
 // {
 //   ensName: "vitalik.eth",
 //   normalizedName: "vitalik.eth",
@@ -393,32 +345,32 @@ The server provides the following MCP tools for agents. **All tools that accept 
 
 #### Token services
 
-| Tool Name | Description | Key Parameters |
-|-----------|-------------|----------------|
-| `get-token-info` | Get ERC20 token metadata | `tokenAddress` (address/ENS), `network` |
-| `get-token-balance` | Check ERC20 token balance | `tokenAddress` (address/ENS), `ownerAddress` (address/ENS), `network` |
-| `transfer-token` | Transfer ERC20 tokens | `privateKey`, `tokenAddress` (address/ENS), `toAddress` (address/ENS), `amount`, `network` |
-| `approve-token-spending` | Approve token allowances | `privateKey`, `tokenAddress` (address/ENS), `spenderAddress` (address/ENS), `amount`, `network` |
-| `get-nft-info` | Get NFT metadata | `tokenAddress` (address/ENS), `tokenId`, `network` |
-| `check-nft-ownership` | Verify NFT ownership | `tokenAddress` (address/ENS), `tokenId`, `ownerAddress` (address/ENS), `network` |
-| `transfer-nft` | Transfer an NFT | `privateKey`, `tokenAddress` (address/ENS), `tokenId`, `toAddress` (address/ENS), `network` |
-| `get-nft-balance` | Count NFTs owned | `tokenAddress` (address/ENS), `ownerAddress` (address/ENS), `network` |
-| `get-erc1155-token-uri` | Get ERC1155 metadata | `tokenAddress` (address/ENS), `tokenId`, `network` |
-| `get-erc1155-balance` | Check ERC1155 balance | `tokenAddress` (address/ENS), `tokenId`, `ownerAddress` (address/ENS), `network` |
-| `transfer-erc1155` | Transfer ERC1155 tokens | `privateKey`, `tokenAddress` (address/ENS), `tokenId`, `amount`, `toAddress` (address/ENS), `network` |
+| Tool Name                | Description               | Key Parameters                                                                                        |
+| ------------------------ | ------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `get-token-info`         | Get ERC20 token metadata  | `tokenAddress` (address/ENS), `network`                                                               |
+| `get-token-balance`      | Check ERC20 token balance | `tokenAddress` (address/ENS), `ownerAddress` (address/ENS), `network`                                 |
+| `transfer-token`         | Transfer ERC20 tokens     | `privateKey`, `tokenAddress` (address/ENS), `toAddress` (address/ENS), `amount`, `network`            |
+| `approve-token-spending` | Approve token allowances  | `privateKey`, `tokenAddress` (address/ENS), `spenderAddress` (address/ENS), `amount`, `network`       |
+| `get-nft-info`           | Get NFT metadata          | `tokenAddress` (address/ENS), `tokenId`, `network`                                                    |
+| `check-nft-ownership`    | Verify NFT ownership      | `tokenAddress` (address/ENS), `tokenId`, `ownerAddress` (address/ENS), `network`                      |
+| `transfer-nft`           | Transfer an NFT           | `privateKey`, `tokenAddress` (address/ENS), `tokenId`, `toAddress` (address/ENS), `network`           |
+| `get-nft-balance`        | Count NFTs owned          | `tokenAddress` (address/ENS), `ownerAddress` (address/ENS), `network`                                 |
+| `get-erc1155-token-uri`  | Get ERC1155 metadata      | `tokenAddress` (address/ENS), `tokenId`, `network`                                                    |
+| `get-erc1155-balance`    | Check ERC1155 balance     | `tokenAddress` (address/ENS), `tokenId`, `ownerAddress` (address/ENS), `network`                      |
+| `transfer-erc1155`       | Transfer ERC1155 tokens   | `privateKey`, `tokenAddress` (address/ENS), `tokenId`, `amount`, `toAddress` (address/ENS), `network` |
 
 #### Blockchain services
 
-| Tool Name | Description | Key Parameters |
-|-----------|-------------|----------------|
-| `get-chain-info` | Get network information | `network` |
-| `get-balance` | Get native token balance | `address` (address/ENS), `network` |
-| `transfer-eth` | Send native tokens | `privateKey`, `to` (address/ENS), `amount`, `network` |
-| `get-transaction` | Get transaction details | `txHash`, `network` |
-| `read-contract` | Read smart contract state | `contractAddress` (address/ENS), `abi`, `functionName`, `args`, `network` |
-| `write-contract` | Write to smart contract | `contractAddress` (address/ENS), `abi`, `functionName`, `args`, `privateKey`, `network` |
-| `is-contract` | Check if address is a contract | `address` (address/ENS), `network` |
-| `resolve-ens` | Resolve ENS name to address | `ensName`, `network` |
+| Tool Name         | Description                    | Key Parameters                                                                          |
+| ----------------- | ------------------------------ | --------------------------------------------------------------------------------------- |
+| `get-chain-info`  | Get network information        | `network`                                                                               |
+| `get-balance`     | Get native token balance       | `address` (address/ENS), `network`                                                      |
+| `transfer-eth`    | Send native tokens             | `privateKey`, `to` (address/ENS), `amount`, `network`                                   |
+| `get-transaction` | Get transaction details        | `txHash`, `network`                                                                     |
+| `read-contract`   | Read smart contract state      | `contractAddress` (address/ENS), `abi`, `functionName`, `args`, `network`               |
+| `write-contract`  | Write to smart contract        | `contractAddress` (address/ENS), `abi`, `functionName`, `args`, `privateKey`, `network` |
+| `is-contract`     | Check if address is a contract | `address` (address/ENS), `network`                                                      |
+| `resolve-ens`     | Resolve ENS name to address    | `ensName`, `network`                                                                    |
 
 ### Resources
 
@@ -426,26 +378,26 @@ The server exposes blockchain data through the following MCP resource URIs. All 
 
 #### Blockchain Resources
 
-| Resource URI Pattern | Description |
-|-----------|-------------|
-| `evm://{network}/chain` | Chain information for a specific network |
-| `evm://chain` | Ethereum mainnet chain information |
-| `evm://{network}/block/{blockNumber}` | Block data by number |
-| `evm://{network}/block/latest` | Latest block data |
-| `evm://{network}/address/{address}/balance` | Native token balance |
-| `evm://{network}/tx/{txHash}` | Transaction details |
-| `evm://{network}/tx/{txHash}/receipt` | Transaction receipt with logs |
+| Resource URI Pattern                        | Description                              |
+| ------------------------------------------- | ---------------------------------------- |
+| `evm://{network}/chain`                     | Chain information for a specific network |
+| `evm://chain`                               | Ethereum mainnet chain information       |
+| `evm://{network}/block/{blockNumber}`       | Block data by number                     |
+| `evm://{network}/block/latest`              | Latest block data                        |
+| `evm://{network}/address/{address}/balance` | Native token balance                     |
+| `evm://{network}/tx/{txHash}`               | Transaction details                      |
+| `evm://{network}/tx/{txHash}/receipt`       | Transaction receipt with logs            |
 
 #### Token Resources
 
-| Resource URI Pattern | Description |
-|-----------|-------------|
-| `evm://{network}/token/{tokenAddress}` | ERC20 token information |
-| `evm://{network}/token/{tokenAddress}/balanceOf/{address}` | ERC20 token balance |
-| `evm://{network}/nft/{tokenAddress}/{tokenId}` | NFT (ERC721) token information |
-| `evm://{network}/nft/{tokenAddress}/{tokenId}/isOwnedBy/{address}` | NFT ownership verification |
-| `evm://{network}/erc1155/{tokenAddress}/{tokenId}/uri` | ERC1155 token URI |
-| `evm://{network}/erc1155/{tokenAddress}/{tokenId}/balanceOf/{address}` | ERC1155 token balance |
+| Resource URI Pattern                                                   | Description                    |
+| ---------------------------------------------------------------------- | ------------------------------ |
+| `evm://{network}/token/{tokenAddress}`                                 | ERC20 token information        |
+| `evm://{network}/token/{tokenAddress}/balanceOf/{address}`             | ERC20 token balance            |
+| `evm://{network}/nft/{tokenAddress}/{tokenId}`                         | NFT (ERC721) token information |
+| `evm://{network}/nft/{tokenAddress}/{tokenId}/isOwnedBy/{address}`     | NFT ownership verification     |
+| `evm://{network}/erc1155/{tokenAddress}/{tokenId}/uri`                 | ERC1155 token URI              |
+| `evm://{network}/erc1155/{tokenAddress}/{tokenId}/balanceOf/{address}` | ERC1155 token balance          |
 
 ## 🔒 Security Considerations
 
